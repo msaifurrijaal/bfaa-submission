@@ -3,7 +3,6 @@ package com.learning.githubuser.ui.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
@@ -115,7 +114,7 @@ class DetailActivity : AppCompatActivity() {
                 tvUserFollowers.text = data.followers.toString()
                 tvUserFollowing.text = data.following.toString()
                 tvUserRepository.text = data.publicRepos.toString()
-                tvUsername.text = data.login
+                "${getString(R.string.mentions)}${data.login}".also { tvUsername.text = it }
                 urlAccount = data.url!!
 
                 ivUser.visibility = View.VISIBLE

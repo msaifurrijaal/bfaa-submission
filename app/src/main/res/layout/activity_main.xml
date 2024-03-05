@@ -148,6 +148,7 @@
             android:id="@+id/tvMessageMain"
             style="@style/TextContent.BodyMedium"
             android:layout_marginTop="8dp"
+            android:textAlignment="center"
             android:text="@string/the_account_you_are_looking_for_does_not_exist" />
 
     </LinearLayout>
