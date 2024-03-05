@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">GithubUser</string>
+    <string name="github_user">Github User</string>
+    <string name="search">Search...</string>
+    <string name="settings_feature_on_development">Settings feature on development</string>
+    <string name="favorite_feature_on_development">Favorite feature on development</string>
+    <string name="the_account_you_are_looking_for_does_not_exist">The account you are looking for does not exist</string>
+    <string name="profile">Profile</string>
+    <string name="default_text">-</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="repository">Repository</string>
+    <string name="tab_text_1">Follower</string>
+    <string name="tab_text_2">Following</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="the_user_has_no_followers">The user has no followers</string>
+    <string name="the_user_has_no_following">The user has no following</string>
+</resources>

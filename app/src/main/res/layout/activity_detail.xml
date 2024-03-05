@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.view.DetailActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingEnd="@dimen/normal_100">
+
+            <ImageButton
+                android:id="@+id/ibBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:contentDescription="@null"
+                android:src="@drawable/baseline_arrow_back_24" />
+
+            <TextView
+                style="@style/TextContent.TitleLarge"
+                android:layout_marginStart="@dimen/normal_175"
+                android:text="@string/profile" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/ibShare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:contentDescription="@null"
+                android:src="@drawable/baseline_share_24" />
+
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarHome"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/normal_125">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/ivUser"
+                        android:layout_width="@dimen/image_user_profile_large"
+                        android:layout_height="@dimen/image_user_profile_large"
+                        android:layout_gravity="center_horizontal"
+                        android:visibility="invisible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@tools:sample/avatars" />
+
+                    <ProgressBar
+                        android:id="@+id/pgMain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true"
+                        android:indeterminateTint="@color/grey"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tvUserFullname"
+                    style="@style/TextContent.TitleLarge.Bold"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/small_125"
+                    android:text="@string/default_text"
+                    tools:text="@tools:sample/full_names" />
+
+                <TextView
+                    android:id="@+id/tvUsername"
+                    style="@style/TextContent.BodyMedium"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/small_25"
+                    android:text="@string/default_text"
+                    android:textColor="@color/grey"
+                    tools:text="@tools:sample/full_names" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/normal_150">
+
+                    <LinearLayout
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="@dimen/small_75">
+
+                        <TextView
+                            style="@style/TextContent.BodyMedium.Bold"
+                            android:text="@string/followers" />
+
+                        <TextView
+                            android:id="@+id/tvUserFollowers"
+                            style="@style/TextContent.BodyMedium"
+                            android:layout_marginTop="@dimen/small_50"
+                            android:text="@string/default_text" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/lines1"
+                        android:layout_width="@dimen/small_25"
+                        android:layout_height="match_parent"
+                        android:background="@color/black" />
+
+                    <LinearLayout
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="@dimen/small_75">
+
+                        <TextView
+                            style="@style/TextContent.BodyMedium.Bold"
+                            android:text="@string/following" />
+
+                        <TextView
+                            android:id="@+id/tvUserFollowing"
+                            style="@style/TextContent.BodyMedium"
+                            android:layout_marginTop="@dimen/small_50"
+                            android:text="@string/default_text" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/lines2"
+                        android:layout_width="@dimen/small_25"
+                        android:layout_height="match_parent"
+                        android:background="@color/black" />
+
+                    <LinearLayout
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="@dimen/small_75">
+
+                        <TextView
+                            style="@style/TextContent.BodyMedium.Bold"
+                            android:text="@string/repository" />
+
+                        <TextView
+                            android:id="@+id/tvUserRepository"
+                            style="@style/TextContent.BodyMedium"
+                            android:layout_marginTop="@dimen/small_50"
+                            android:text="@string/default_text" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normal_150"
+                app:layout_constraintTop_toBottomOf="@+id/container_profile"
+                app:tabIndicatorColor="@color/black"
+                app:tabTextColor="@color/black" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tabs" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
