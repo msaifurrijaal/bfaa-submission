@@ -1,12 +1,14 @@
 package com.learning.githubuser.ui.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.learning.githubuser.R
 import com.learning.githubuser.data.Resource
 import com.learning.githubuser.data.adapter.FollowAdapter
 import com.learning.githubuser.data.model.ResponseItemFollow
@@ -58,6 +60,10 @@ class FollowingFragment : Fragment() {
                 is Resource.Success -> {
                     showDetailResult(resources.data)
                 }
+
+                else -> {
+                    showError(getString(R.string.error_message))
+                }
             }
         }
     }
@@ -65,14 +71,14 @@ class FollowingFragment : Fragment() {
     private fun showLoading() {
         binding.apply {
             rvFollow.visibility = View.GONE
-            tvMessage.visibility = View.GONE
-            pgFollow.visibility = View.VISIBLE
+            tvMessage.visibility = View.VISIBLE
+            pgFollowFollowing.visibility = View.VISIBLE
         }
     }
 
     private fun showError(message: String?) {
         binding.apply {
-            pgFollow.visibility = View.GONE
+            pgFollowFollowing.visibility = View.GONE
             rvFollow.visibility = View.GONE
             tvMessage.text = message
             tvMessage.visibility = View.VISIBLE
@@ -99,7 +105,7 @@ class FollowingFragment : Fragment() {
 
     private fun noEmptyData() {
         binding.apply {
-            pgFollow.visibility = View.GONE
+            pgFollowFollowing.visibility = View.GONE
             tvMessage.visibility = View.GONE
             rvFollow.visibility = View.VISIBLE
         }
@@ -107,7 +113,7 @@ class FollowingFragment : Fragment() {
 
     private fun emptyData() {
         binding.apply {
-            pgFollow.visibility = View.GONE
+            pgFollowFollowing.visibility = View.GONE
             rvFollow.visibility = View.GONE
             tvMessage.visibility = View.VISIBLE
         }

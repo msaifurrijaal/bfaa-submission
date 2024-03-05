@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                 is Resource.Success -> showSearchResults(resource.data)
                 is Resource.Error -> showError(resource.message)
                 else -> {
-                    showError("There some errors")
+                    showError(getString(R.string.error_message))
                 }
             }
         }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.learning.githubuser.R
 import com.learning.githubuser.data.Resource
 import com.learning.githubuser.data.adapter.FollowAdapter
 import com.learning.githubuser.data.model.ResponseItemFollow
@@ -57,6 +58,10 @@ class FollowersFragment : Fragment() {
 
                 is Resource.Success -> {
                     showDetailResult(resources.data)
+                }
+
+                else -> {
+                    showError(getString(R.string.error_message))
                 }
             }
         }

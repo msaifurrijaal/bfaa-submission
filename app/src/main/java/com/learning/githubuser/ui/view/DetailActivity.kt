@@ -1,5 +1,6 @@
 package com.learning.githubuser.ui.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -24,6 +25,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var viewModel: DetailViewModel
     private lateinit var username: String
     private lateinit var tabsFollowAdapter: TabsAdapter
+    private var urlAccount = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +49,20 @@ class DetailActivity : AppCompatActivity() {
             ibBack.setOnClickListener {
                 finish()
             }
+
+            ibShare.setOnClickListener {
+                val sendIntent: Intent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(
+                        Intent.EXTRA_TEXT,
+                        "Information about account\nGoes to profile page $urlAccount"
+                    )
+                    type = "text/plain"
+                }
+
+                val shareIntent = Intent.createChooser(sendIntent, null)
+                startActivity(shareIntent)
+            }
         }
     }
 
@@ -65,7 +81,6 @@ class DetailActivity : AppCompatActivity() {
     private fun observeDataUser() {
         viewModel.searchDetailUser(username)
         viewModel.detailUserResult.observe(this) { resources ->
-            Log.d("DetailActivity", "$username, $resources")
             when (resources) {
                 is Resource.Error -> {
                     showError(resources.message)
@@ -79,7 +94,9 @@ class DetailActivity : AppCompatActivity() {
                     showDetailResult(resources.data)
                 }
 
-                else -> {}
+                else -> {
+                    showError(getString(R.string.error_message))
+                }
             }
         }
     }
@@ -99,6 +116,7 @@ class DetailActivity : AppCompatActivity() {
                 tvUserFollowing.text = data.following.toString()
                 tvUserRepository.text = data.publicRepos.toString()
                 tvUsername.text = data.login
+                urlAccount = data.url!!
 
                 ivUser.visibility = View.VISIBLE
                 pgMain.visibility = View.GONE
