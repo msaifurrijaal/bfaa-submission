@@ -12,7 +12,7 @@ import com.learning.githubuser.data.Resource
 import com.learning.githubuser.data.adapter.FollowAdapter
 import com.learning.githubuser.data.model.ResponseItemFollow
 import com.learning.githubuser.databinding.FragmentFollowersBinding
-import com.learning.githubuser.ui.viewmodel.FollowViewModel
+import com.learning.githubuser.ui.viewmodel.FollowersViewModel
 import com.learning.githubuser.utils.Constants
 
 class FollowersFragment : Fragment() {
@@ -21,7 +21,7 @@ class FollowersFragment : Fragment() {
     private var _binding: FragmentFollowersBinding? = null
     private val binding get() = _binding!!
     private lateinit var followersAdapter: FollowAdapter
-    private lateinit var viewModel: FollowViewModel
+    private lateinit var viewModel: FollowersViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +30,7 @@ class FollowersFragment : Fragment() {
         _binding = FragmentFollowersBinding.inflate(inflater, container, false)
 
         username = arguments?.getString(Constants.USERNAME)
-        viewModel = ViewModelProvider(this)[FollowViewModel::class.java]
+        viewModel = ViewModelProvider(this)[FollowersViewModel::class.java]
 
         return binding.root
     }
