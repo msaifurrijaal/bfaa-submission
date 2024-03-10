@@ -18,5 +18,7 @@
     <string name="the_user_has_no_following">The user has no following</string>
     <string name="error_message">There some errors</string>
     <string name="mentions">\@</string>
+    <string name="favorite">Favorite</string>
+    <string name="setting">Setting</string>
 
 </resources>

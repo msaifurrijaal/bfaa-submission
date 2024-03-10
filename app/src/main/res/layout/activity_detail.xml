@@ -26,7 +26,8 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:contentDescription="@null"
-                android:src="@drawable/baseline_arrow_back_24" />
+                android:src="@drawable/baseline_arrow_back_24"
+                app:tint="?android:textColorPrimary" />
 
             <TextView
                 style="@style/TextContent.TitleLarge"
@@ -44,7 +45,8 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:contentDescription="@null"
-                android:src="@drawable/baseline_share_24" />
+                android:src="@drawable/baseline_share_24"
+                app:tint="?android:textColorPrimary"/>
 
 
         </LinearLayout>
@@ -205,7 +207,7 @@
                 android:layout_marginTop="@dimen/normal_150"
                 app:layout_constraintTop_toBottomOf="@+id/container_profile"
                 app:tabIndicatorColor="@color/black"
-                app:tabTextColor="@color/black" />
+                app:tabTextColor="?android:textColorPrimary" />
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPager"
