@@ -1,5 +1,6 @@
 package com.learning.githubuser.ui.view
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,22 +9,31 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.learning.githubuser.R
 import com.learning.githubuser.data.Resource
-import com.learning.githubuser.data.adapter.UserAdapter
+import com.learning.githubuser.adapter.UserAdapter
+import com.learning.githubuser.data.datastore.SettingPreferences
 import com.learning.githubuser.data.model.ResponseItemSearch
 import com.learning.githubuser.data.model.ResponseSearchUser
 import com.learning.githubuser.databinding.ActivityMainBinding
 import com.learning.githubuser.ui.viewmodel.MainViewModel
+import com.learning.githubuser.ui.viewmodel.SettingViewModel
+import com.learning.githubuser.ui.viewmodel.ViewModelFactory
 import com.learning.githubuser.utils.Constants
 import com.learning.githubuser.utils.hideSoftKeyboard
+
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: MainViewModel
+    private lateinit var mainViewModel: MainViewModel
+    private lateinit var settingViewModel: SettingViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +43,10 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbarHome)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        val pref = SettingPreferences.getInstance(dataStore)
+        settingViewModel =
+            ViewModelProvider(this, ViewModelFactory(pref)).get(SettingViewModel::class.java)
 
         with(binding) {
             searchView.setupWithSearchBar(searchBar)
@@ -42,19 +55,28 @@ class MainActivity : AppCompatActivity() {
                 .setOnEditorActionListener { _, _, _ ->
                     searchBar.setText(searchView.text)
                     hideSoftKeyboard(this@MainActivity, binding.root)
-                    viewModel.searchUsers(searchView.text.toString())
+                    mainViewModel.searchUsers(searchView.text.toString())
                     false
                 }
         }
 
+        observeTheme()
         observeDataUsers()
-
-//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
     }
 
+    private fun observeTheme() {
+        settingViewModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
+            if (isDarkModeActive) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
+    }
+
     private fun observeDataUsers() {
-        viewModel.searchResults.observe(this) { resource ->
+        mainViewModel.searchResults.observe(this) { resource ->
             when (resource) {
                 is Resource.Loading -> showLoading()
                 is Resource.Success -> showSearchResults(resource.data)
@@ -160,11 +182,9 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.setting -> {
-                Toast.makeText(
-                    this,
-                    getString(R.string.settings_feature_on_development), Toast.LENGTH_SHORT
-                ).show()
-
+                startActivity(
+                    Intent(this@MainActivity, SettingActivity::class.java)
+                )
             }
         }
         return super.onOptionsItemSelected(item)

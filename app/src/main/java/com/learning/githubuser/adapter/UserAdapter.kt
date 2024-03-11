@@ -1,14 +1,20 @@
-package com.learning.githubuser.data.adapter
+package com.learning.githubuser.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.learning.githubuser.data.model.ResponseItemFollow
+import com.learning.githubuser.data.model.ResponseItemSearch
 import com.learning.githubuser.databinding.ItemUserBinding
 
-class FollowAdapter(private val listUser: ArrayList<ResponseItemFollow>) :
-    RecyclerView.Adapter<FollowAdapter.ViewHolder>() {
+class UserAdapter(private val listUser: List<ResponseItemSearch>) :
+    RecyclerView.Adapter<UserAdapter.ViewHolder>() {
+
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     class ViewHolder(var binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -28,5 +34,11 @@ class FollowAdapter(private val listUser: ArrayList<ResponseItemFollow>) :
                 .load(user.avatarUrl)
                 .into(imgUser)
         }
+
+        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(user) }
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(user: ResponseItemSearch)
     }
 }

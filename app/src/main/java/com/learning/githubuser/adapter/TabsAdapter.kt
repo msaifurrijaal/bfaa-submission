@@ -1,4 +1,4 @@
-package com.learning.githubuser.data.adapter
+package com.learning.githubuser.adapter
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

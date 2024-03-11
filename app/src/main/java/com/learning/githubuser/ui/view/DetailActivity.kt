@@ -12,7 +12,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.learning.githubuser.R
 import com.learning.githubuser.data.Resource
-import com.learning.githubuser.data.adapter.TabsAdapter
+import com.learning.githubuser.adapter.TabsAdapter
 import com.learning.githubuser.data.model.ResponseDetailUser
 import com.learning.githubuser.databinding.ActivityDetailBinding
 import com.learning.githubuser.ui.viewmodel.DetailViewModel
@@ -31,7 +31,7 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbarHome)
+        setSupportActionBar(binding.toolbarDetail)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
         viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
