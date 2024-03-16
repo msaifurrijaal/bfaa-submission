@@ -20,5 +20,6 @@
     <string name="mentions">\@</string>
     <string name="favorite">Favorite</string>
     <string name="setting">Setting</string>
+    <string name="dark_mode">Dark Mode</string>
 
 </resources>

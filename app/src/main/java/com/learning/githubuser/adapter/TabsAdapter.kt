@@ -1,4 +1,4 @@
-package com.learning.githubuser.data.adapter
+package com.learning.githubuser.adapter
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +8,7 @@ import com.learning.githubuser.ui.view.FollowersFragment
 import com.learning.githubuser.ui.view.FollowingFragment
 import com.learning.githubuser.utils.Constants
 
-class TabsAdapter (activity: AppCompatActivity) : FragmentStateAdapter(activity) {
+class TabsAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
 
     private var username: String? = null
 

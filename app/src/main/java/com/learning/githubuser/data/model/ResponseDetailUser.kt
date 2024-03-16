@@ -1,8 +1,11 @@
 package com.learning.githubuser.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-data class ResponseDetailUser (
+@Entity(tableName = "userDetail")
+data class ResponseDetailUser(
     @field:SerializedName("gists_url")
     var gistsUrl: String? = null,
 
@@ -42,6 +45,7 @@ data class ResponseDetailUser (
     @field:SerializedName("company")
     var company: String? = null,
 
+    @PrimaryKey
     @field:SerializedName("id")
     var id: Int? = null,
 

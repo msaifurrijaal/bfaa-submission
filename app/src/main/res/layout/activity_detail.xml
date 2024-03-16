@@ -7,7 +7,7 @@
     tools:context=".ui.view.DetailActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarHome"
+        android:id="@+id/toolbarDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +59,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarHome"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarDetail"
         android:fillViewport="true">
 
         <LinearLayout
@@ -206,7 +206,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/normal_150"
                 app:layout_constraintTop_toBottomOf="@+id/container_profile"
-                app:tabIndicatorColor="@color/black"
+                app:tabIndicatorColor="?android:textColorPrimary"
                 app:tabTextColor="?android:textColorPrimary" />
 
             <androidx.viewpager2.widget.ViewPager2
@@ -219,5 +219,18 @@
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_favorite_border_24"
+        android:tint="?android:textColorPrimary"
+        android:backgroundTint="?android:colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/normal_125"
+        android:layout_marginBottom="@dimen/normal_125"
+        android:contentDescription="@null" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

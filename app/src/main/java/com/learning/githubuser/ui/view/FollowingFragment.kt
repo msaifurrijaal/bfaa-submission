@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.learning.githubuser.R
 import com.learning.githubuser.data.Resource
-import com.learning.githubuser.data.adapter.FollowAdapter
+import com.learning.githubuser.adapter.FollowAdapter
 import com.learning.githubuser.data.model.ResponseItemFollow
 import com.learning.githubuser.databinding.FragmentFollowingBinding
 import com.learning.githubuser.ui.viewmodel.FollowingViewModel
