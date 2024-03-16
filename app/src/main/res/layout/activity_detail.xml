@@ -220,4 +220,17 @@
 
     </androidx.core.widget.NestedScrollView>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_favorite_border_24"
+        android:tint="?android:textColorPrimary"
+        android:backgroundTint="?android:colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/normal_125"
+        android:layout_marginBottom="@dimen/normal_125"
+        android:contentDescription="@null" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

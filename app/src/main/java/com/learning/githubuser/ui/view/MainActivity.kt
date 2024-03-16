@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -175,10 +174,9 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.favorite -> {
-                Toast.makeText(
-                    this,
-                    getString(R.string.favorite_feature_on_development), Toast.LENGTH_SHORT
-                ).show()
+                startActivity(
+                    Intent(this@MainActivity, FavoriteActivity::class.java)
+                )
             }
 
             R.id.setting -> {

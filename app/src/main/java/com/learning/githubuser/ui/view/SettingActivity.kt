@@ -9,7 +9,6 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.lifecycle.ViewModelProvider
 import androidx.datastore.preferences.preferencesDataStore
-import com.learning.githubuser.R
 import com.learning.githubuser.data.datastore.SettingPreferences
 import com.learning.githubuser.databinding.ActivitySettingBinding
 import com.learning.githubuser.ui.viewmodel.SettingViewModel
@@ -28,7 +27,8 @@ class SettingActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val pref = SettingPreferences.getInstance(dataStore)
-        settingViewModel = ViewModelProvider(this, ViewModelFactory(pref)).get(SettingViewModel::class.java)
+        settingViewModel =
+            ViewModelProvider(this, ViewModelFactory(pref))[SettingViewModel::class.java]
 
         observeTheme()
         onAction()
